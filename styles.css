@@ -182,9 +182,11 @@ body {
   -webkit-backdrop-filter: blur(4px);
   opacity: 0;
   transition: opacity 0.3s;
+  pointer-events: none;
 }
 .sidebar-overlay.visible {
   opacity: 1;
+  pointer-events: auto;
 }
 
 /* ═══════════════════════════════════════
