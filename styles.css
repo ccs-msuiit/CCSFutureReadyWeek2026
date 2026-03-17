@@ -857,6 +857,8 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
   margin-bottom: 2.5rem;
+  position: relative;
+  z-index: 10;
 }
 .jump-card {
   display: flex;
@@ -888,14 +890,17 @@ body {
   display: grid;
   place-items: center;
   flex-shrink: 0;
+  pointer-events: none;
 }
 .jump-card-icon svg {
   width: 20px; height: 20px;
   stroke: var(--teal);
+  pointer-events: none;
 }
 .jump-card-text {
   flex: 1;
   min-width: 0;
+  pointer-events: none;
 }
 .jump-card-title {
   font-family: 'Playfair Display', serif;
@@ -904,12 +909,14 @@ body {
   color: var(--white);
   line-height: 1.3;
   margin-bottom: 0.15rem;
+  pointer-events: none;
 }
 .jump-card-desc {
   font-size: 0.75rem;
   color: var(--muted);
   font-weight: 300;
   line-height: 1.4;
+  pointer-events: none;
 }
 .jump-card-arrow {
   font-size: 1.2rem;
@@ -917,6 +924,7 @@ body {
   opacity: 0;
   transition: opacity 0.2s, transform 0.2s;
   flex-shrink: 0;
+  pointer-events: none;
 }
 .jump-card:hover .jump-card-arrow {
   opacity: 1;
@@ -1167,14 +1175,6 @@ body {
     padding-bottom: 0.75rem;
     font-size: 0.78rem;
     color: var(--muted);
-  }
-  .programme-col-person::before {
-    content: 'By: ';
-    font-size: 0.65rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(139,163,192,0.5);
-    font-weight: 600;
   }
   .programme-row + .programme-row {
     border-top: 1px solid rgba(0,201,167,0.08);
