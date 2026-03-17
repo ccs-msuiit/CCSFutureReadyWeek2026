@@ -868,8 +868,14 @@ body {
   background: rgba(0,201,167,0.03);
   text-decoration: none;
   transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0,201,167,0.15);
+  touch-action: manipulation;
+  position: relative;
+  z-index: 1;
 }
-.jump-card:hover {
+.jump-card:hover,
+.jump-card:active {
   background: rgba(0,201,167,0.08);
   border-color: rgba(0,201,167,0.35);
   transform: translateY(-2px);
@@ -915,6 +921,11 @@ body {
 .jump-card:hover .jump-card-arrow {
   opacity: 1;
   transform: translateX(3px);
+}
+
+@media (pointer: coarse) {
+  .jump-card { min-height: 56px; }
+  .jump-card-arrow { opacity: 1; }
 }
 
 @media (max-width: 600px) {
