@@ -12,7 +12,7 @@
 
 <nav class="sidebar" id="sidebar">
   <div class="sidebar-brand">
-    <a href="index.html">CCS <span>Future-Ready</span> Week</a>
+    <a href="index.html"><img src="images/iitlogo.png" alt="MSU-IIT Logo" class="sidebar-logo">CCS <span>Future-Ready</span> Week</a>
   </div>
   <div class="sidebar-links">
     <a href="index.html">
@@ -59,6 +59,24 @@
       <p class="event-intro">
         A convergence of industry partners, government agencies, alumni leaders, and academic collaborators to discuss the present state and future direction of the College of Computer Studies.
       </p>
+      <div class="countdown" id="countdown">
+        <div class="countdown-item">
+          <div class="countdown-value" id="cd-days">--</div>
+          <div class="countdown-label">Days</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-value" id="cd-hours">--</div>
+          <div class="countdown-label">Hours</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-value" id="cd-minutes">--</div>
+          <div class="countdown-label">Minutes</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-value" id="cd-seconds">--</div>
+          <div class="countdown-label">Seconds</div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -293,6 +311,27 @@
   toggle.addEventListener('click', () => { sidebar.classList.contains('open') ? closeSidebar() : openSidebar(); });
   overlay.addEventListener('click', closeSidebar);
   document.querySelectorAll('.sidebar-links a').forEach(l => l.addEventListener('click', () => { if (window.innerWidth <= 768) closeSidebar(); }));
+
+  // Countdown to April 20, 2026 8:30 AM PHT
+  const eventDate = new Date('2026-04-20T08:30:00+08:00').getTime();
+  function updateCountdown() {
+    const now = Date.now();
+    const diff = eventDate - now;
+    if (diff <= 0) {
+      document.getElementById('countdown').innerHTML = '<div class="countdown-done">The event has started!</div>';
+      return;
+    }
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+    document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+    document.getElementById('cd-minutes').textContent = String(minutes).padStart(2, '0');
+    document.getElementById('cd-seconds').textContent = String(seconds).padStart(2, '0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
 </script>
 </body>
 </html>

@@ -12,7 +12,7 @@
 
 <nav class="sidebar" id="sidebar">
   <div class="sidebar-brand">
-    <a href="index.html">CCS <span>Future-Ready</span> Week</a>
+    <a href="index.html"><img src="images/iitlogo.png" alt="MSU-IIT Logo" class="sidebar-logo">CCS <span>Future-Ready</span> Week</a>
   </div>
   <div class="sidebar-links">
     <a href="index.html">
@@ -112,8 +112,32 @@
         <p class="content-block-subtitle">Descriptions and objectives of CCS degree programs</p>
       </div>
 
+      <!-- Program Jump Cards -->
+      <div class="program-jump-cards">
+        <a href="#bsit" class="program-jump-card" onclick="document.getElementById('bsit').scrollIntoView({behavior:'smooth'});return false;">
+          <div class="program-jump-code">BSIT</div>
+          <div class="program-jump-name">Information Technology</div>
+          <div class="program-jump-arrow">&rarr;</div>
+        </a>
+        <a href="#bsis" class="program-jump-card" onclick="document.getElementById('bsis').scrollIntoView({behavior:'smooth'});return false;">
+          <div class="program-jump-code">BSIS</div>
+          <div class="program-jump-name">Information Systems</div>
+          <div class="program-jump-arrow">&rarr;</div>
+        </a>
+        <a href="#bscs" class="program-jump-card" onclick="document.getElementById('bscs').scrollIntoView({behavior:'smooth'});return false;">
+          <div class="program-jump-code">BSCS</div>
+          <div class="program-jump-name">Computer Science</div>
+          <div class="program-jump-arrow">&rarr;</div>
+        </a>
+        <a href="#bsca" class="program-jump-card" onclick="document.getElementById('bsca').scrollIntoView({behavior:'smooth'});return false;">
+          <div class="program-jump-code">BSCA</div>
+          <div class="program-jump-name">Computer Applications</div>
+          <div class="program-jump-arrow">&rarr;</div>
+        </a>
+      </div>
+
       <!-- BSIT -->
-      <div class="ccs-program-card">
+      <div class="ccs-program-card" id="bsit">
         <div class="ccs-program-header">
           <div class="ccs-program-code">BSIT</div>
           <div class="ccs-program-name">Bachelor of Science in Information Technology</div>
@@ -135,7 +159,7 @@
       </div>
 
       <!-- BSIS -->
-      <div class="ccs-program-card">
+      <div class="ccs-program-card" id="bsis">
         <div class="ccs-program-header">
           <div class="ccs-program-code">BSIS</div>
           <div class="ccs-program-name">Bachelor of Science in Information Systems</div>
@@ -156,7 +180,7 @@
       </div>
 
       <!-- BSCS -->
-      <div class="ccs-program-card">
+      <div class="ccs-program-card" id="bscs">
         <div class="ccs-program-header">
           <div class="ccs-program-code">BSCS</div>
           <div class="ccs-program-name">Bachelor of Science in Computer Science</div>
@@ -178,7 +202,7 @@
       </div>
 
       <!-- BSCA -->
-      <div class="ccs-program-card">
+      <div class="ccs-program-card" id="bsca">
         <div class="ccs-program-header">
           <div class="ccs-program-code">BSCA</div>
           <div class="ccs-program-name">Bachelor of Science in Computer Applications</div>
