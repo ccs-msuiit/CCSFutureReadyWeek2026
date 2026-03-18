@@ -757,6 +757,74 @@ body {
 }
 
 /* ═══════════════════════════════════════
+   RSVP BOX
+   ═══════════════════════════════════════ */
+.rsvp-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(245,200,66,0.05);
+  border: 1px solid rgba(245,200,66,0.2);
+  border-radius: 14px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.rsvp-qr {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: #fff;
+  padding: 6px;
+}
+.rsvp-text {
+  font-size: 0.82rem;
+  color: rgba(244,241,236,0.7);
+  font-weight: 300;
+  line-height: 1.7;
+  text-align: center;
+}
+.rsvp-text a {
+  color: var(--teal);
+  text-decoration: none;
+  font-weight: 500;
+}
+.rsvp-text a:hover {
+  text-decoration: underline;
+}
+.rsvp-text strong {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.rsvp-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.7rem 1.5rem;
+  border-radius: 10px;
+  background: rgba(0,201,167,0.12);
+  border: 1px solid rgba(0,201,167,0.3);
+  color: var(--teal);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+.rsvp-btn:hover {
+  background: rgba(0,201,167,0.2);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+  .rsvp-box { padding: 1.25rem; }
+  .rsvp-qr { width: 120px; height: 120px; }
+}
+
+/* ═══════════════════════════════════════
    EVENT PAGE — BODY
    ═══════════════════════════════════════ */
 .event-body {
