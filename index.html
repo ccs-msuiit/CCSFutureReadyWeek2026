@@ -75,6 +75,32 @@
     </div>
   </section>
 
+  <!-- CAROUSEL -->
+  <div class="carousel-section">
+    <div class="carousel-label">Previous Events</div>
+    <div class="carousel" id="carousel">
+      <div class="carousel-track" id="carouselTrack">
+        <img src="images/c1.jpg" alt="Previous event 1" class="carousel-slide">
+        <img src="images/c2.jpg" alt="Previous event 2" class="carousel-slide">
+        <img src="images/c3.jpg" alt="Previous event 3" class="carousel-slide">
+        <img src="images/c4.jpg" alt="Previous event 4" class="carousel-slide">
+        <img src="images/c5.jpg" alt="Previous event 5" class="carousel-slide">
+        <img src="images/c6.jpg" alt="Previous event 6" class="carousel-slide">
+        <img src="images/c7.jpg" alt="Previous event 7" class="carousel-slide">
+        <img src="images/c8.jpg" alt="Previous event 8" class="carousel-slide">
+        <img src="images/c9.jpg" alt="Previous event 9" class="carousel-slide">
+        <img src="images/c10.jpg" alt="Previous event 10" class="carousel-slide">
+        <img src="images/c11.jpg" alt="Previous event 11" class="carousel-slide">
+        <img src="images/c12.jpg" alt="Previous event 12" class="carousel-slide">
+      </div>
+    </div>
+    <div class="carousel-controls">
+      <button class="carousel-btn" id="carouselPrev" aria-label="Previous">&larr;</button>
+      <div class="carousel-dots" id="carouselDots"></div>
+      <button class="carousel-btn" id="carouselNext" aria-label="Next">&rarr;</button>
+    </div>
+  </div>
+
   <!-- ABOUT -->
   <div class="about-wrapper">
     <div class="about-grid">
@@ -180,6 +206,51 @@
       if (window.innerWidth <= 768) closeSidebar();
     });
   });
+
+  // Carousel
+  (function() {
+    const track = document.getElementById('carouselTrack');
+    const slides = track.querySelectorAll('.carousel-slide');
+    const prevBtn = document.getElementById('carouselPrev');
+    const nextBtn = document.getElementById('carouselNext');
+    const dotsContainer = document.getElementById('carouselDots');
+    let current = 0;
+    const total = slides.length;
+
+    // Create dots
+    for (let i = 0; i < total; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      dot.addEventListener('click', () => goTo(i));
+      dotsContainer.appendChild(dot);
+    }
+    const dots = dotsContainer.querySelectorAll('.carousel-dot');
+
+    function goTo(index) {
+      current = (index + total) % total;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+
+    // Auto-advance every 4 seconds
+    let autoplay = setInterval(() => goTo(current + 1), 4000);
+    const carousel = document.getElementById('carousel');
+    carousel.addEventListener('mouseenter', () => clearInterval(autoplay));
+    carousel.addEventListener('mouseleave', () => { autoplay = setInterval(() => goTo(current + 1), 4000); });
+
+    // Swipe support
+    let startX = 0;
+    carousel.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; clearInterval(autoplay); }, { passive: true });
+    carousel.addEventListener('touchend', (e) => {
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) goTo(current + (diff > 0 ? 1 : -1));
+      autoplay = setInterval(() => goTo(current + 1), 4000);
+    }, { passive: true });
+  })();
 </script>
 </body>
 </html>
